@@ -1,0 +1,37 @@
+{% extends "../layout.html" %}
+{% block content %}
+<div class="content-section">
+     <table class="table table-striped table-bordered table-hover">
+        <thead class="thead-dark">
+          <tr>
+               <th scope="col">#</th>
+               <th scope="col">Name </th>
+               <th scope="col">Quantity in Stock</th>
+               <th scope="col">Quantity sold</th>
+               <th scope="col">Cost per items</th>
+               <th scope="col">Sales or Revenue</th>
+               <th scope="col">Stock date</th>
+               <th scope="col">Last sales date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for inventory in inventories%}
+          <tr  class="cursor: pointer; cursor:hand;"  >
+               <th scope="new">{{forloop.counter}}</th>
+               <th scope="new">{{inventory.name}}</th>
+               <th scope="new">{{inventory.quantity_in_stock}}</th>
+               <th scope="new">{{inventory.quantity_sold}}</th>
+               <th scope="new">{{inventory.cost_per_item}}</th>
+               <th scope="new">{{inventory.sales}}</th>
+               <th scope="new">{{inventory.stock_date}}</th>
+               <th scope="new">{{inventory.last_sales_date}}</th>
+               <th>
+               <a href="{% url 'update_inventory' inventory.pk %}" class="btn  "><i class="far fa-edit fa-lg text-primary float-right"></i></a>
+               <a href="{% url 'delete_inventory' inventory.pk %}" class="btn  "><i class="far fa-trash-alt fa-lg text-danger float-right"></i></a>
+               </th>
+          </tr>
+          {% endfor %}
+        </tbody>
+     </table>
+</div>
+{% endblock %}
